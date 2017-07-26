@@ -1,0 +1,22 @@
+defaultTasks 'clean', 'build', 'publish', 'installDist'
+mainClassName = "coyote.loader.BootStrap"
+
+jar {
+    manifest {
+		attributes  'Implementation-Title' : 'Coyote JavaScript Tools',
+		'Provider' : 'Coyote Systems',
+		'Main-Class' : "$mainClassName",
+		'Implementation-Version' : version
+	}
+}
+
+ext {
+	junitVersion = '4.12'
+	rhinoVersion = '1.7.7.1'
+}
+dependencies {
+	compile project(':CoyoteDX')
+	compile "coyote:CoyoteDX:$version"
+	compile "org.mozilla:rhino:$rhinoVersion"
+	testCompile "junit:junit:$junitVersion"	
+}
